@@ -1,0 +1,46 @@
+
+
+
+<link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+
+<link href='https://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
+
+
+<nb-card class="search">
+    <nb-card-body class="example-items-rows">
+       <h1>SEARCH MOVIE!</h1>
+        <div class="divider"></div>
+       <form [formGroup]="reactiveForm" novalidate>
+        <div class="search-container form-group">
+             <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
+             <input class="form-control" formControlName="name" type="search" [(ngModel)]="s_title" placeholder="Search" >
+             <div *ngIf="reactiveForm.controls['name'].invalid && (reactiveForm.controls['name'].dirty || reactiveForm.controls['name'].touched)" class="alert alert-danger">
+                <div *ngIf="reactiveForm.controls['name'].errors?.required">
+                  Movie name required
+                </div>
+                <!-- <div *ngIf="reactiveForm.controls['name'].errors?.minlength">
+                    Movie must be at least 3 characters
+                  </div> -->
+                  <div *ngIf="reactiveForm.controls['name'].errors?.maxlength">
+                    Username must not exceed 20 characters
+                  </div>
+            </div>
+           <button
+                 (click)="searchmovie(s_title)"
+                 nbButton
+                 status="danger"
+                 class="search-btn"
+                 >
+                 Search
+             </button>
+            </div>
+       </form>
+       
+    
+    </nb-card-body>
+</nb-card>
+
+<app-movies [movieData]="movieList" ></app-movies>
+<!-- <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>  -->
+
+<app-pagination [current]="current" [total]="total" (goTo)="onGoto($event)" (next)="onNext($event)" (previous)="onPrevious($event)" [movieData]="movieList"></app-pagination>

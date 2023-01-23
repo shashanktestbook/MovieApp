@@ -1,0 +1,24 @@
+<!-- <p>movie-details works!</p>-->
+
+
+<div class="row">
+    <div *ngIf="loader">
+        <div class="loading"></div>
+    </div>
+    <div *ngIf="!loader">
+        <div class="column">
+            <img src="{{movie.Poster}}" alt="{{movie.Title}}">
+        </div>
+        <div class="column">
+            <h2>{{movie.Title}}</h2>
+            <p>{{movie.Year}}</p>
+            <div class="about"><b>About: </b>{{movie.Plot}}</div>
+            <p><b>IMDB rating : </b> {{movie.imdbRating}} </p>
+            <p><b>Awards: </b> {{movie.Awards}} </p>
+        </div>
+    </div>
+
+</div>
+
+
+

@@ -1,0 +1,34 @@
+
+<div class="container py-4">
+    <div class="row">
+      <div class="col-md-3 col-sm-6" *ngFor="let movie of bookmarks" >
+        <nb-card class="movie-card-container">
+          <nb-card-body>
+            <div class="movie-poster" routerLink="/bookmark/{{movie.imdbID}}">
+              <img src="{{ movie.Poster }}" alt="{{ movie.Title }}" />
+            </div>
+            <div class="movie-content-container">
+              <nb-icon
+                (click)="removebookmarks(movie)"
+                class="bookmark_icon"
+                nbPrefix
+                icon="bookmark"
+                pack="eva"
+                style="color: red"
+              ></nb-icon>
+              <div class="movie-title">
+                <h5>{{ movie.Title }}</h5>
+              </div>
+              <div class="movie-detail-container">
+                <div class="year-genre">
+                  <p class="genre"><span>Type : </span> {{ movie.Type }}</p>
+                  <p class="year"><span>Year : </span> {{ movie.Year }}</p>
+                </div>
+              </div>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </div>
+  </div>
+

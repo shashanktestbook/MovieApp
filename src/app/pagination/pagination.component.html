@@ -1,0 +1,21 @@
+<nav aria-label="pagination" class="pagination">
+    <ul>
+        <!-- <li>
+            <button [attr.aria-disabled]="current===1" [attr.disabled]="current===1" (click)="onPrevious()" class="page"> &lt;&lt;Previous </button>
+        </li> -->
+    <li *ngFor="let page of pages;" class="current" id="current"> 
+        <a [attr.aria-current]="page===current ? 'page': null"
+        [attr.aria-label]="page === current ? 'Current Page, Page ' + page : 'Go to Page ' + page"
+      [class.current]="page === current"
+        tabindex="0"
+        (click)="onGoto(page)"
+        (keyup.enter)="onGoto(page)"
+        >
+        {{page}}
+        </a>
+    </li>
+    <!-- <li>
+    <button [attr.aria-disabled]="current===total" [attr.disabled]="current===total" (click)="onNext()" class="page" > Next&gt;&gt; </button>
+    </li> -->
+</ul>
+</nav> 
