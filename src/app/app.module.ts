@@ -23,6 +23,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { PostRequestComponent } from './post-request/post-request.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     MovieDetailsComponent,
     BookmarkComponent,
     PaginationComponent,
+    PostRequestComponent,
   ],
   imports: [
     BrowserModule,

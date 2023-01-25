@@ -15,9 +15,9 @@
              <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
              <input class="form-control" formControlName="name" type="search" [(ngModel)]="s_title" placeholder="Search" >
              <div *ngIf="reactiveForm.controls['name'].invalid && (reactiveForm.controls['name'].dirty || reactiveForm.controls['name'].touched)" class="alert alert-danger">
-                <div *ngIf="reactiveForm.controls['name'].errors?.required">
+                <!-- <div *ngIf="reactiveForm.controls['name'].errors?.required">
                   Movie name required
-                </div>
+                </div> -->
                 <!-- <div *ngIf="reactiveForm.controls['name'].errors?.minlength">
                     Movie must be at least 3 characters
                   </div> -->
@@ -43,4 +43,4 @@
 <app-movies [movieData]="movieList" ></app-movies>
 <!-- <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>  -->
 
-<app-pagination [current]="current" [total]="total" (goTo)="onGoto($event)" (next)="onNext($event)" (previous)="onPrevious($event)" [movieData]="movieList"></app-pagination>
+<app-pagination *ngIf="pagination" [current]="current" [total]="total" (goTo)="onGoto($event)" (next)="onNext($event)" (previous)="onPrevious($event)" [movieData]="movieList"></app-pagination>

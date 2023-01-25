@@ -30,14 +30,14 @@
 .btn {
     background: #e50914;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.313em;
     color: white;
-    padding: 7px 17px;
+    padding: 0.438em 1.0632m;
     text-align: center;
     text-decoration: none !important;
     display: inline-block;
-    font-size: 16px;
-    margin: 5px;
+    font-size: 1em;
+    margin: 0.313em;
 }
 
 .btn:hover {

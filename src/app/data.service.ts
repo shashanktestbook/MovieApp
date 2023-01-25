@@ -7,21 +7,27 @@ import { Movie } from './movie';
 })
 export class DataService {
 
+  public static api_url = `http://www.omdbapi.com` ;
+  public static key = `e4fdc5`;
+  
+
   constructor(private http: HttpClient) { }
-  findMovieByTitle(title: any) {
-    let url = `http://www.omdbapi.com/?s=${title}&apikey=e4fdc5`;
-    return fetch(url)
+  
+  getMovieByTitle(title: any) {
+    // let url = `http://www.omdbapi.com/?s=${title}&apikey=e4fdc5`;
+
+    return fetch(DataService.api_url+`/?s=${title}&apikey=` + DataService.key)
     .then(res => res.json())
     .catch(err =>  console.log("Error! :D", err))
   }
 
-  loadmovie(id: any) {
-    return this.http.get<any>(`http://www.omdbapi.com/?i=${id}&apikey=e4fdc5`)
+  loadmovieDetails(id: any) {
+    return this.http.get<any>(DataService.api_url + `/?i=${id}&apikey=` + DataService.key)
  
   }
 
-  getMovies(title: any, page:number){
-    return this.http.get<any>(`http://www.omdbapi.com/?s=${title}&page=${page}&apikey=e4fdc5`)
+  getMoviesByPage(title: any, page:number){
+    return this.http.get<any>(DataService.api_url+`/?s=${title}&page=${page}&apikey=`+DataService.key)
   }
 }
 

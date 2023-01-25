@@ -13,8 +13,8 @@ export class MovieDetailsComponent implements OnInit {
 
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
-  showmovie(){
-    this.dataService.loadmovie(this.route.snapshot.paramMap.get('id')).subscribe(movie =>{
+  showmovieDetails(){
+    this.dataService.loadmovieDetails(this.route.snapshot.paramMap.get('id')).subscribe(movie =>{
       this.movie = movie;
     })
       
@@ -22,7 +22,7 @@ export class MovieDetailsComponent implements OnInit {
   
 
   ngOnInit(): void {
-    this.showmovie();
+    this.showmovieDetails();
 
     setTimeout(() => {
       this.loader = false;

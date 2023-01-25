@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit {
   // curr_page: number;
   movieList=[];
   reactiveForm!: FormGroup;
+  pagination: boolean = false;
 
   public current: number = 1;
   public total: number = 10;
@@ -40,7 +41,7 @@ export class HomeComponent implements OnInit {
 
    createForm() {
     this.reactiveForm = this.fb.group({
-      name: ['', [Validators.required,
+      name: ['', [//Validators.required,
                   // Validators.minLength(3),
                   Validators.maxLength(20)]]
     })
@@ -48,21 +49,22 @@ export class HomeComponent implements OnInit {
 
 
   searchmovie(title: any) {
+    this.pagination = true;
 
-    this.router.navigate(
-      [''],
-      {queryParams: {title: title}}
-    )
+    // this.router.navigate(
+    //   [''],
+    //   {queryParams: {title: title}}
+    // )
 
     this.dataService
-      .findMovieByTitle(title)
+      .getMovieByTitle(title)
       .then((result)=> (this.movieList = result.Search))
 
   }
 
   paginate(title: any){
     this.dataService
-      .getMovies(title, this.current).subscribe((response: any) => {
+      .getMoviesByPage(title, this.current).subscribe((response: any) => {
         this.movieList = response.Search;
         console.log(response);
         this.total = response.totalResults;

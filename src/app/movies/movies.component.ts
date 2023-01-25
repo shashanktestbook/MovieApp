@@ -1,5 +1,6 @@
 // import { identifierName } from '@angular/compiler';
 import { state } from '@angular/animations';
+import { ThisReceiver } from '@angular/compiler';
 import { Component, Input, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { title } from 'process';
@@ -19,7 +20,10 @@ export class MoviesComponent implements OnInit {
   
   movies: string[] = [];
   bookmarks: Movie[] = [];
-  public s_title: any
+  public s_title: any;
+  blank: boolean=true;
+
+
 
   public current: number = 1;
   public total: number = 10;
@@ -94,7 +98,7 @@ export class MoviesComponent implements OnInit {
 
   paginate(title: string){
     this.dataService
-      .getMovies(title, this.current).subscribe((response: any) => {
+      .getMoviesByPage(title, this.current).subscribe((response: any) => {
         this.movieData = response.Search;
         // this.s_title = response.Search[0].Title;
         console.log(response);
@@ -111,6 +115,9 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies(null);
+    if (this.movieData.length=0) {
+      this.blank = false;
+    }
   }
 
 }

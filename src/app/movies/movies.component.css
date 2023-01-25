@@ -135,6 +135,9 @@
   font-weight: 600;
 } */
 
+.noData{ 
+  color: white;
+}
 
 
 .movie-card-container {

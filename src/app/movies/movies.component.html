@@ -1,6 +1,6 @@
-
 <div class="container py-4">
-    <div class="row">
+    <div class="noData" *ngIf="!blank">No data found...</div>
+    <div *ngIf="blank" class="row">
       <div class="col-md-3 col-sm-6" *ngFor="let movie of movieData" >
         <nb-card class="movie-card-container">
           <nb-card-body>
