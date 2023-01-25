@@ -35,5 +35,3 @@ export class DataService {
 // Go through the '@angular/common/http' docs
 // Implement proper error handling mechanism 
 // API key should static just like url and declared at the top level in the class
-
-// 

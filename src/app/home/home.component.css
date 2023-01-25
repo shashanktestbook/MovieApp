@@ -6,7 +6,7 @@
 	font-family: 'Ubuntu Condensed', sans-serif; 
 	font-size: 6em;
 	text-align: center;
-	margin-top: 90px;
+	margin-top: 5.625em;
 	opacity: 0; 
 	animation: fade 2s ease-in, 
 								up 1s ease-in; 
@@ -14,9 +14,9 @@
   }
   
   .divider {
-	width: 0px; height: 2px; 
+	width: 0px; height: 0.125em; 
 	background: black;
-	margin: -10px auto 30PX;
+	margin: -0.625em auto 1.875em;
 	opacity: 0;
 	animation: fade 1s 0.75s linear,
 								stretch 1s 0.4s linear;
@@ -32,12 +32,12 @@
   }
   
   @keyframes up {
-	0%    { margin-top: 90px; }
-	60%   { margin-top: 30px; }
-	70%   { margin-top: 25px;  }
-	80%   { margin-top: 30px; }
-	90%   { margin-top: 25px;  } 
-	100%  { margin-top: 30px; }
+	0%    { margin-top: 5.625em; }
+	60%   { margin-top: 1.875em; }
+	70%   { margin-top: 1.563em;  }
+	80%   { margin-top: 1.875em; }
+	90%   { margin-top: 1.563em;  } 
+	100%  { margin-top: 1.875em; }
   }
   
   @keyframes stretch {
@@ -46,7 +46,7 @@
   }
   
   input:invalid {
-    border: 2px dashed red;
+    border: 0.125em dashed red;
   }
 
   .paginate {
@@ -61,7 +61,7 @@
   justify-content: center;
   background:none;
   border: none;
-  padding: 20px;
+  padding: 1.25em;
   text-align: center;
 }
 .form-container {
