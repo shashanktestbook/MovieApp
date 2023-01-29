@@ -1,4 +1,5 @@
 export interface Movie{
+    json(): any;
     Title: string;
     Year: number;
     Rated: string;

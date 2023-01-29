@@ -1,0 +1,54 @@
+.logo {
+    width: 5em;
+    height: 5em;
+
+}
+.header-wrapper{
+    display: flex;
+    justify-content:space-around;
+    flex:1;
+
+}
+
+.body-container{
+    background: radial-gradient(#00000030 , #000000), url("src/assets/background.jpg");
+    height: 100%;
+    /* background-size: 100%; */
+
+}
+
+.header {
+    background: linear-gradient(to bottom , black , black);
+
+}
+.logo-container {
+    flex:1;
+}
+
+.btn {
+    background: #e50914;
+    border: none;
+    border-radius: 0.313em;
+    color: white;
+    padding: 0.438em 1.0632m;
+    text-align: center;
+    text-decoration: none !important;
+    display: inline-block;
+    font-size: 1em;
+    margin: 0.313em;
+}
+
+.btn:hover {
+    color: black;
+
+}
+p  {
+    color: #999999 !important;
+}
+
+.footer a {
+    color: #e50914 !important;
+}
+a:hover{
+    text-decoration: none;
+}

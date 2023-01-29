@@ -3,14 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { BookmarkComponent } from './bookmark/bookmark.component';
-import { PaginationComponent } from './pagination/pagination.component';
+import { PaginationComponent } from './common/pagination/pagination.component';
 import { MoviesComponent } from './movies/movies.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
   }, 
+  {
+    path: 'title',
+    component: MoviesComponent
+  },
   {
     path: 'detail/:id',
     component: MovieDetailsComponent
@@ -22,10 +26,6 @@ const routes: Routes = [
   {
     path: 'bookmark/:id',
     component: MovieDetailsComponent
-  },
-  {
-    path: 'movie',
-    component: MoviesComponent
   }
 ];
 
@@ -34,3 +34,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
+// subcomponents of home component

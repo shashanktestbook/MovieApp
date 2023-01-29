@@ -1,9 +1,9 @@
 
 
 
-<link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+<!-- <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
 
-<link href='https://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Damion' rel='stylesheet' type='text/css'> -->
 
 
 <nb-card class="search">
@@ -13,7 +13,7 @@
        <form [formGroup]="reactiveForm" novalidate>
         <div class="search-container form-group">
              <nb-icon nbPrefix icon="search-outline" pack="eva"></nb-icon>
-             <input class="form-control" formControlName="name" type="search" [(ngModel)]="s_title" placeholder="Search" autocomplete="off" >
+             <input class="form-control" formControlName="name" type="search" [(ngModel)]="searchTitle" placeholder="Search" autocomplete="off" >
              <div *ngIf="reactiveForm.controls['name'].invalid && (reactiveForm.controls['name'].dirty || reactiveForm.controls['name'].touched)" class="alert alert-danger">
                 <!-- <div *ngIf="reactiveForm.controls['name'].errors?.required">
                   Movie name required
@@ -26,10 +26,11 @@
                   </div>
             </div>
            <button
-                 (click)="searchmovie(s_title)"
+                 (click)="searchmovie(searchTitle)"
                  nbButton
                  status="danger"
                  class="search-btn"
+                 routerLink="/{{searchTitle}}"
                  >
                  Search
              </button>
@@ -40,7 +41,9 @@
     </nb-card-body>
 </nb-card>
 
-<app-movies [movieData]="movieList" ></app-movies>
+<app-movies [response]="response" [movieData]="movieList" ></app-movies>
 <!-- <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>  -->
 
 <app-pagination *ngIf="pagination" [current]="current" [total]="total" (goTo)="onGoto($event)" (next)="onNext($event)" (previous)="onPrevious($event)" [movieData]="movieList"></app-pagination>
+
+<!-- redirect to pages based on different titles -->

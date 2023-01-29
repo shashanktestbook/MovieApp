@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataService } from '../data.service';
+import { DataService } from '../services/data.service';
+import { Loader } from '../common/loader/loader';
 
 @Component({
   selector: 'app-movie-details',
@@ -9,12 +10,12 @@ import { DataService } from '../data.service';
 })
 export class MovieDetailsComponent implements OnInit {
   movie: any;
-  loader: boolean = true;
+  public loader: boolean = true;
 
   constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
   showmovieDetails(){
-    this.dataService.loadmovieDetails(this.route.snapshot.paramMap.get('id')).subscribe(movie =>{
+    this.dataService.getmovieDetails(this.route.snapshot.paramMap.get('id')).subscribe(movie =>{
       this.movie = movie;
     })
       
@@ -24,9 +25,6 @@ export class MovieDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.showmovieDetails();
 
-    setTimeout(() => {
-      this.loader = false;
-    }, 3000);
   }
 
   
@@ -34,3 +32,6 @@ export class MovieDetailsComponent implements OnInit {
   // @Input() movieData: any;
 
 }
+
+// set loader in pipe based on observable
+// loader in common component

@@ -1,8 +1,10 @@
 import { Component, OnInit, Output, Input } from '@angular/core';
-import { DataService } from '../data.service';
+import { DataService } from '../services/data.service';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute , Router} from '@angular/router';
 import { EventEmitter } from '@angular/core';
+// consistency in variable names
+
 
 @Component({
   selector: 'app-home',
@@ -10,28 +12,30 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public s_title: string[] = [];
+  public searchTitle: string[] = [];
   // curr_page: number;
   movieList=[];
   reactiveForm!: FormGroup;
+  errorMessage: string = '';
   pagination: boolean = false;
+  response: string = "false";
 
   public current: number = 1;
   public total: number = 10;
 
   public onGoto(page: number): void {
     this.current = page;
-    this.paginate(this.s_title)
+    this.paginate(this.searchTitle)
   }
 
   public onNext(page: number): void {
     this.current = this.current+1;
-    this.paginate(this.s_title);
+    this.paginate(this.searchTitle);
   }
   
   public onPrevious(page: number): void{
     this.current = this.current-1;
-    this.paginate(this.s_title);
+    this.paginate(this.searchTitle);
   }
 
 
@@ -49,7 +53,7 @@ export class HomeComponent implements OnInit {
 
 
   searchmovie(title: any) {
-    this.pagination = true;
+    
 
     // this.router.navigate(
     //   [''],
@@ -57,14 +61,21 @@ export class HomeComponent implements OnInit {
     // )
 
     this.dataService
-      .getMovieByTitle(title)
-      .then((result)=> (this.movieList = result.Search))
+      .getMoviesByTitle(title, 1).subscribe((result: any) => {
+        this.movieList = result.Search;
+        this.total = result.totalResults;
+        this.response = result.Response;
+        this.pagination = true;
+      })
+
+      
+      // .then((result: { Search: never[]; })=> (this.movieList = result.Search))
 
   }
 
   paginate(title: any){
     this.dataService
-      .getMoviesByPage(title, this.current).subscribe((response: any) => {
+      .getMoviesByTitle(title, this.current).subscribe((response: any) => {
         this.movieList = response.Search;
         console.log(response);
         this.total = response.totalResults;
@@ -74,24 +85,17 @@ export class HomeComponent implements OnInit {
   pageChangeEvent(event: number){
     this.current = event;
 
-    this.paginate(this.s_title);
+    this.paginate(this.searchTitle);
   }
 
 
-
+// capture search and rediect - write function in init
+// generalize getMovies function
 
   
 
 
   ngOnInit(): void {
-    // this.reactiveForm = new FormGroup({
-    //   search : new FormControl(this.s_title.search , [
-    //     Validators.required,
-    //     Validators.minLength(4),
-    //     Validators.maxLength(250)
-    //   ])
-    // })
-    // this.s_title = +this.activatedRoute.snapshot.queryParamMap.get('s_title')||null;
 
 
   }

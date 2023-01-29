@@ -1,63 +1,12 @@
-<!-- <nb-layout>
+<ngx-ui-loader></ngx-ui-loader>
 
-  <nb-layout-header fixed class="header">
-  
-  <div>
-    <div class="header-wrapper">
-      <div class="logo-container">
-        <img class="logo" src="../assets/imdb.png" style="padding: 10px;">
-      </div>
-      <div class="btn-container">
-        <a class='btn' href="/">Search</a>
-        <a class='btn' href="bookmark">Bookmarks</a>
-      </div>
-    </div>
-  </div>
-
-  </nb-layout-header>
-
-  <nb-layout-column>
-    <div style="padding: 0!important;" class="body-container">
-      <router-outlet></router-outlet>
-    </div>
-      
-    
-      
-    
-  </nb-layout-column>
-
-
-  <nb-layout-footer fixed>
-  
-  </nb-layout-footer>
-
-</nb-layout> -->
-
-
+<app-header></app-header>
 
 <nb-layout>
-
-  <nb-layout-header class="header">
-    <div class="header-wrapper">
-      <div class="logo-container">
-        <img class="logo" src="../assets/logo.png" style="padding: 10px;">
-      </div>
-      <div class="btn-container">
-        <a class='btn' href="/">Search</a>
-        <a class='btn' href="bookmark">Bookmarks</a>
-      </div>
-    </div>
-  </nb-layout-header>
-  
-
   <nb-layout-column style="padding: 0!important;" class="body-container">
     <router-outlet></router-outlet>
-
-  </nb-layout-column>
-
-  <!-- <nb-layout-footer class="footer" style="padding: 0 !important;">
-    <p> Shashank| Copyright | 2023</p>
-  </nb-layout-footer> -->
   
-
+  </nb-layout-column>
 </nb-layout>
+
+

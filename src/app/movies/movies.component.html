@@ -1,36 +1,47 @@
-<div class="container py-4">
-    <div class="noData" *ngIf="!blank">No data found...</div>
-    <div *ngIf="blank" class="row">
-      <div class="col-md-3 col-sm-6" *ngFor="let movie of movieData" >
-        <nb-card class="movie-card-container">
-          <nb-card-body>
-            <div class="movie-poster" routerLink="/detail/{{movie.imdbID}}">
-              <img src="{{ movie.Poster }}" alt="{{ movie.Title }}" />
-            </div>
-            <div class="movie-content-container">
-              <nb-icon
-                (click)="getMovies(movie)"
-                class="bookmark_icon"
-                nbPrefix
-                icon="bookmark"
-                pack="eva"
-                [ngClass]="{active : movie.active}"
-              ></nb-icon>
-              <div class="movie-title">
-                <h5>{{ movie.Title }}</h5>
+<ngx-ui-loader></ngx-ui-loader>
+<div>
+<div *ngIf="response=='False'">
+  <alert-component></alert-component>
+</div>
+
+<div *ngIf="response=='True'" class="container py-4">
+    <!-- <div class="noData" *ngIf="!blank">No data found...</div> -->
+    <div class="row">
+      <!-- <div *ngIf="response == 'False'"> No data... </div> -->
+      <!-- <div *ngIf="response == 'True'"> -->
+        <div  class="col-md-3 col-sm-6" *ngFor="let movie of movieData" >
+          <nb-card class="movie-card-container">
+            <nb-card-body>
+              <div class="movie-poster" routerLink="/detail/{{movie.imdbID}}">
+                <img src="{{ movie.Poster }}" alt="{{ movie.Title }}" />
               </div>
-              <div class="movie-detail-container">
-                <div class="year-genre">
-                  <p class="genre"><span>Type : </span> {{ movie.Type }}</p>
-                  <p class="year"><span>Year : </span> {{ movie.Year }}</p>
+              <div class="movie-content-container">
+                <nb-icon
+                  (click)="getMovies(movie)"
+                  class="bookmark_icon"
+                  nbPrefix
+                  icon="bookmark"
+                  pack="eva"
+                  [ngClass]="{active : movie.active}"
+                ></nb-icon>
+                <div class="movie-title">
+                  <h5>{{ movie.Title }}</h5>
+                </div>
+                <div class="movie-detail-container">
+                  <div class="year-genre">
+                    <p class="genre"><span>Type : </span> {{ movie.Type }}</p>
+                    <p class="year"><span>Year : </span> {{ movie.Year }}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </nb-card-body>
-        </nb-card>
-      </div>
+            </nb-card-body>
+          </nb-card>
+        </div>
+      <!-- </div> -->
+      
     </div>
   </div>
+</div>
 
   
 

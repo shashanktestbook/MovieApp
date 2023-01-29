@@ -6,8 +6,9 @@ import { Title } from '@angular/platform-browser';
 import { title } from 'process';
 // import { Title } from '@angular/platform-browser';
 // import { last } from 'rxjs';
-import { DataService } from '../data.service';
-import { Movie } from '../movie';
+import { DataService } from '../services/data.service';
+import { Movie } from '../modules/movie';
+
 
 
 
@@ -20,13 +21,14 @@ export class MoviesComponent implements OnInit {
   
   movies: string[] = [];
   bookmarks: Movie[] = [];
-  public s_title: any;
+  public searchTitle: any;
   blank: boolean=true;
 
 
 
   public current: number = 1;
   public total: number = 10;
+  errorMessage: any;
 
   // public onGoto(page: number): void {
   //   this.current = page;
@@ -44,7 +46,6 @@ export class MoviesComponent implements OnInit {
   // }
 
  
-
   constructor(private dataService : DataService) { }
 
 
@@ -94,30 +95,29 @@ export class MoviesComponent implements OnInit {
 
 
   @Input() movieData: any; 
+  @Input() response: string = "false";
   // @Input() s_title: string | ;
 
   paginate(title: string){
     this.dataService
-      .getMoviesByPage(title, this.current).subscribe((response: any) => {
-        this.movieData = response.Search;
+      .getMoviesByTitle(title, this.current).subscribe((result: any) => {
+        this.movieData = result.Search;
         // this.s_title = response.Search[0].Title;
-        console.log(response);
-        this.total = response.totalResults;
+        console.log(result);
+        this.total = result.totalResults;
+        this.response = result.Response
       });
   }
 
   pageChangeEvent(event: number){
     this.current = event;
 
-    this.paginate(this.s_title); //access title
+    this.paginate(this.searchTitle); //access title
   }
 
 
   ngOnInit(): void {
     this.getMovies(null);
-    if (this.movieData.length=0) {
-      this.blank = false;
-    }
   }
 
 }

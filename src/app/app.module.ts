@@ -15,15 +15,19 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
-import { DataService } from './data.service';
+import { DataService } from './services/data.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {NbLayoutModule , NbThemeModule , NbInputModule,NbCardModule, NbButtonModule,NbTabsetModule,NbActionsModule,NbButtonGroupModule,NbIconModule, NbFormFieldModule,} from "@nebular/theme";
 import { BookmarkComponent } from './bookmark/bookmark.component';
-import { PaginationComponent } from './pagination/pagination.component';
+import { PaginationComponent } from './common/pagination/pagination.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { PostRequestComponent } from './post-request/post-request.component';
+import { HeaderComponent } from './header/header.component';
+import { Loader } from './common/loader/loader';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { Alert } from './common/alert/alert';
 
 @NgModule({
   declarations: [
@@ -34,6 +38,9 @@ import { PostRequestComponent } from './post-request/post-request.component';
     BookmarkComponent,
     PaginationComponent,
     PostRequestComponent,
+    HeaderComponent,
+    Loader,
+    Alert
   ],
   imports: [
     BrowserModule,
@@ -57,7 +64,9 @@ import { PostRequestComponent } from './post-request/post-request.component';
     NbButtonModule,
     NbTabsetModule,
     NbActionsModule,
-    NbButtonGroupModule
+    NbButtonGroupModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({ showForeground: true })
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

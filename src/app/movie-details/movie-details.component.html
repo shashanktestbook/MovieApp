@@ -2,10 +2,8 @@
 
 
 <div class="row">
-    <div *ngIf="loader">
-        <div class="loading"></div>
-    </div>
-    <div *ngIf="!loader">
+    <ngx-ui-loader></ngx-ui-loader>
+    <div>
         <div class="column">
             <img src="{{movie.Poster}}" alt="{{movie.Title}}">
         </div>
@@ -22,3 +20,4 @@
 
 
 
+<!-- static binding -->

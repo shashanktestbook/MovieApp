@@ -1,6 +1,6 @@
 import { Component,Input, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
-import { Movie } from '../movie';
+import { DataService } from '../services/data.service';
+import { Movie } from '../modules/movie';
 
 @Component({
   selector: 'app-bookmark',
