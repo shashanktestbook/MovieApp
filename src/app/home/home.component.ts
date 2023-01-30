@@ -3,8 +3,8 @@ import { DataService } from '../services/data.service';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { ActivatedRoute , Router} from '@angular/router';
 import { EventEmitter } from '@angular/core';
+import { query } from '@angular/animations';
 // consistency in variable names
-
 
 @Component({
   selector: 'app-home',
@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
 
   public current: number = 1;
   public total: number = 10;
+  public form: { filter: string };
 
   public onGoto(page: number): void {
     this.current = page;
@@ -41,6 +42,11 @@ export class HomeComponent implements OnInit {
 
   constructor(private dataService: DataService, private fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router) {
     this.createForm();
+    this.activatedRoute = activatedRoute;
+    this.form = {
+      filter: (activatedRoute.snapshot.params.filter || "")
+    }
+
    }
 
    createForm() {
@@ -51,6 +57,25 @@ export class HomeComponent implements OnInit {
     })
    }
 
+  //  public applySearch() : void {
+  //   this.applyFilterToRoute();
+  //  }
+
+  //  private applyFilterToRoute() : void {
+  //   this.router.navigate(
+  //     [
+  //       {
+  //         name: this.searchTitle
+  //       }
+  //     ],
+  //     {
+  //       relativeTo: this.activatedRoute,
+  //       replaceUrl: true
+  //     }
+  //   );
+
+  //   document.title = `Search: ${this.searchTitle}`;
+  //  }
 
   searchmovie(title: any) {
     
@@ -59,6 +84,10 @@ export class HomeComponent implements OnInit {
     //   [''],
     //   {queryParams: {title: title}}
     // )
+
+    
+      
+
 
     this.dataService
       .getMoviesByTitle(title, 1).subscribe((result: any) => {
@@ -96,7 +125,6 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-
 
   }
 

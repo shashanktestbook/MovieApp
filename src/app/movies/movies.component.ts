@@ -8,6 +8,7 @@ import { title } from 'process';
 // import { last } from 'rxjs';
 import { DataService } from '../services/data.service';
 import { Movie } from '../modules/movie';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 
@@ -46,7 +47,7 @@ export class MoviesComponent implements OnInit {
   // }
 
  
-  constructor(private dataService : DataService) { }
+  constructor(private dataService : DataService, private router: Router, private acttivatedRoute: ActivatedRoute) { }
 
 
   getMovies(movie: any) {
@@ -114,6 +115,7 @@ export class MoviesComponent implements OnInit {
 
     this.paginate(this.searchTitle); //access title
   }
+  
 
 
   ngOnInit(): void {

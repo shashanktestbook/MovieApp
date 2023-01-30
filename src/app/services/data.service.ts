@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from'@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from'@angular/common/http';
 import { Movie } from '../modules/movie';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
@@ -22,14 +22,22 @@ export class DataService {
 
 
   getmovieDetails(id: any) {
-    return this.http.get<any>(DataService.apiUrl + `/?i=${id}&apikey=` + DataService.key)
+    const params = new HttpParams()
+      .set('i', id)
+      .set('apikey', DataService.key);
+   
+    return this.http.get<any>(DataService.apiUrl, { 'params': params })
                     .pipe(retry(1), catchError(this.handleError))
                     
  
   }
 
   getMoviesByTitle(title: any, page:number) {
-    return this.http.get<Movie>(DataService.apiUrl+`/?s=${title}&page=${page}&apikey=`+DataService.key)
+    const params = new HttpParams()
+      .set('s', title)
+      .set('page', page)
+      .set('apikey', DataService.key)
+    return this.http.get<Movie>(DataService.apiUrl, { 'params': params })
                     .pipe(retry(1), catchError(this.handleError))
   }
 
